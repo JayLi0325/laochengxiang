@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+  <script src="https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js"></script>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/stylesheet.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Belleza">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Average+Sans">
+  <title>Map</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      color: #000000;
+      font-family: "Goudy Old Style Bold";
+      font-size:32px;
+      text-shadow: 1px 1px 10px #2f2f2f, 1px 1px 10px #868686;
+    }
+
+    p {
+      color: #000000;
+      font-family: "Gilroy Regular";
+      font-size:11.5px;
+    }
+
+    .wrapper {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+    }
+
+    .guide {
+      position: relative;
+      margin: 10px 0px 0px 20px;
+      z-index: 10;
+      grid-column: 1/2;
+    }
+
+    .menu {
+      position: relative;
+      margin: 10px 20px 0px 30px;
+      z-index: 10;
+      grid-column: 7/8;
+      text-align: right;
+    }
+
+    #map {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: auto;
+    }
+
+    .marker {
+      background-image: url('../media/map/map_marker.png');
+      background-size: cover;
+      width: 17px;
+      height: 23px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .mapboxgl-popup {
+      max-width: 200px;
+    }
+
+    .mapboxgl-popup-content {
+      text-align: center;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    /* The sidebar menu */
+    .sidebar {
+      height: 100%;
+      /* 100% Full-height */
+      width: 0;
+      /* 0 width - change this with JavaScript */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Stay on top */
+      top: 0;
+      left: 0;
+      background-color: rgb(0, 0, 0);
+      overflow-x: hidden;
+      /* Disable horizontal scroll */
+      overflow-y: auto;
+      padding-top: 60px;
+      /* Place content 60px from the top */
+      transition: 0.5s;
+      /* 0.5 second transition effect to slide in the sidebar */
+    }
+
+    .sidebar .content {
+      margin-left: 30px;
+      margin-right: 30px;
+      margin-top: 30px;
+    }
+
+    .sidebar .content .title {
+      font-size: 30px;
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+    .sidebar .content .para {
+      font-size: 16px;
+      color: #ffffff;
+    }
+
+    .sidebar .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 60px;
+      margin-right: -10px;
+    }
+
+    .sidebar a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 25px;
+      color: #ffffff;
+      display: block;
+      transition: 0.3s;
+    }
+
+    /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+    #main {
+      transition: margin-left .5s;
+      /* If you want a transition effect */
+      padding: 0px;
+    }
+
+    /* popup window button */
+    button {
+    background-color: #FFFFFF;
+    border: 1px solid black;
+    color: black; 
+    cursor: pointer; 
+    }
+
+    buttonactive {
+    background-color: lightyellow;
+    border: 1px solid black;
+    color: black; 
+    cursor: pointer; 
+    }
+
+    button:hover {
+    background-color: lightyellow;
+    }
+
+    a:link {
+    color:black;
+    text-decoration: none;
+    outline: none; 
+    border: 0;
+    }
+
+    a:visited {
+    color:black;
+    text-decoration: none;
+    
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="content">
+      <div class="para">This is a virtual tour of Laochengxiang (老城厢).</div>
+      <br>
+      <div class="title">How To Navigate?</div>
+    </div>
+  </div>
+
+  <div id="main">
+    <div id='map' style='width: 100%; height: auto;'></div>
+    <div class="wrapper">
+      <div class="guide" onclick="openNav()">
+        <h1>GUIDE</h1>
+      </div>
+      <div class="menu">
+        <h1>HOME</h1>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <script>
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic2l5dWNjaGVuIiwiYSI6ImNsYnZoYjViZzJoNXozcHBqbzR1Y2pxZjQifQ.5H9fghwphrlDGMgs2bgnqQ';
+
+    const geojson = {
+      'type': 'FeatureCollection',
+      'features': [
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [121.480965, 31.223564]
+          },
+          'properties': {
+            'description': '<p>Intersection between North Kongjia Alley and Jinjia Lane | 北孔家弄金家坊路口 <a href="scan01.html"><button>3D SCAN</button></a> <br><br> <img src="../media/image/thumbnail/q1_01_beikongjia_jinjiafang.png" width="220px"></p>'
+          }
+        },
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [121.48199, 31.22394]
+          },
+          'properties': {
+            'description': '<p>Interior of No.91 Jinjia Lane (金家坊91号房屋内部)  <button><a href="scan01.html">3D SCAN</a></button></p>'
+          }
+        },
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [121.481995, 31.223967]
+          },
+          'properties': {
+            'description': '<p>Intersection between Jinjia Lane and Yiqing Street (金家坊贻庆街) <button><a href="scan01.html">3D SCAN</a></button></p>'
+          }
+        },
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [121.482697, 31.224186]
+          },
+          'properties': {
+            'description': '<p>No.60 Honglangan Street (红栏杆街60号) <button><a href="scan01.html">3D SCAN</a></button></p>'
+          }
+        },
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [121.48294,31.22428]
+          },
+          'properties': {
+            'description': '<p>Aly.11 No.1-3 Jinjia Lane (金家坊11弄1-3号) <button><a href="scan01.html">3D SCAN</a></button></p>'
+          }
+        },
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [121.48111,31.224159]
+          },
+          'properties': {
+            'description': '<p>Aly.44 Xima Lane (西马街44弄) <button><a href="scan01.html">3D SCAN</a></button></p>'
+          }
+        },
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [121.48108,31.22409]
+          },
+          'properties': {
+            'description': '<p>Aly.23 Xima Lane (西马街23弄) <button><a href="scan01.html">3D SCAN</a></button></p>'
+          }
+        },
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [121.48263,31.2245]
+          },
+          'properties': {
+            'description': '<p>Aly.47 No.11 Jinjia Lane(金家坊47弄11号) <button><a href="scan01.html">3D SCAN</a></button></p>'
+          }
+        },
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [121.48242,31.22348]
+          },
+          'properties': {
+            'description': '<p>No.53-55 Kongjia Lane(孔家弄53-55号) <button><a href="scan01.html">3D SCAN</a></button></p>'
+          }
+        },
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [121.481277,31.222933]
+          },
+          'properties': {
+            'description': '<p>Intersection between North Kongjia Lane and Kongjia Lane (北孔家弄孔家弄路口) <button><a href="scan01.html">3D SCAN</a></button></p>'
+          }
+        },
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [121.481056,31.222797]
+          },
+          'properties': {
+            'description': '<p>Aly.129 Kongjia Lane (孔家弄129弄) <button><a href="scan01.html">3D SCAN</a></button></p>'
+          }
+        },
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [121.480896,31.222738]
+          },
+          'properties': {
+            'description': '<p>Aly.119 Kongjia Lane (孔家弄119弄) <button><a href="scan01.html">3D SCAN</a></button></p>'
+          }
+        },
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [121.480843,31.222485]
+          },
+          'properties': {
+            'description': '<p>Aly.52 Wenjia Lane (翁家弄52弄) <button><a href="scan01.html">3D SCAN</a></button></p>'
+          }
+        },
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [121.480843,31.222485]
+          },
+          'properties': {
+            'description': '<p>Wenjia Branch Alley (翁家支弄) <button><a href="scan01.html">3D SCAN</a></button></p>'
+          }
+        },
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [121.484444,31.221405]
+          },
+          'properties': {
+            'description': '<p>Menghua Street (梦花街) <button><a href="scan01.html">3D SCAN</a></button></p>'
+          }
+        },
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [121.483543,31.220861]
+          },
+          'properties': {
+            'description': '<p>Intersection between Xuegong Street and Menghua Street (学宫街梦花街) <button><a href="scan01.html">3D SCAN</a></button></p>'
+          }
+        },
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [121.483887,31.220335]
+          },
+          'properties': {
+            'description': '<p>Aly 413. Xuegong Street (学宫街413弄) <button><a href="scan01.html">3D SCAN</a></button></p>'
+          }
+        },
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [121.486198,31.219185]
+          },
+          'properties': {
+            'description': '<p>Xianmianci Street(先棉祠街) <button><a href="scan01.html">3D SCAN</a></button></p>'
+          }
+        },
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [121.488083,31.22101]
+          },
+          'properties': {
+            'description': '<p>Aly.14 Tingqiao Street (亭桥街14弄) <button><a href="scan01.html">3D SCAN</a></button></p>'
+          }
+        },
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [121.488655,31.221214]
+          },
+          'properties': {
+            'description': '<p>No.4 Ninghe Road (凝和路4号) <button><a href="scan01.html">3D SCAN</a></button></p>'
+          }
+        },
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [121.49142,31.21952]
+          },
+          'properties': {
+            'description': '<p>Bricks found on Qiaojia Road (乔家路砖头) <button><a href="scan01.html">3D SCAN</a></button></p>'
+          }
+        },
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [121.491219,31.21911]
+          },
+          'properties': {
+            'description': '<p>Aly.99 Huangjia Road (黄家路99弄) <button><a href="scan01.html">3D SCAN</a></button></p>'
+          }
+        },
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [121.492134,31.219318]
+          },
+          'properties': {
+            'description': '<p>No.85 Qiaojia Road (乔家路85号周边) <button><a href="scan01.html">3D SCAN</a></button></p>'
+          }
+        },
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [121.492126,31.219336]
+          },
+          'properties': {
+            'description': '<p>Zi Garden (梓园) <button><a href="scan01.html">3D SCAN</a></button></p>'
+          }
+        },
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [121.492409,31.218634]
+          },
+          'properties': {
+            'description': '<p>No.75 Yujia Alley (愈家弄75号) <button><a href="scan01.html">3D SCAN</a></button></p>'
+          }
+        },
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [121.493217,31.218412]
+          },
+          'properties': {
+            'description': '<p>Intersection between Yujia Alley and Yongkang Road (愈家弄永康街) <button><a href="scan01.html">3D SCAN</a></button></p>'
+          }
+        },
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [121.488655,31.221251]
+          },
+          'properties': {
+            'description': '<p>Wangyun Road (望云路) <button><a href="scan01.html">3D SCAN</a></button></p>'
+          }
+        },
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [121.492432,31.226707]
+          },
+          'properties': {
+            'description': '<p>Intersection between Zhonghua Road and Yujia Road (中华路康家路路口) <button><a href="scan01.html">3D SCAN</a></button></p>'
+          }
+        },
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [121.49118,31.22739]
+          },
+          'properties': {
+            'description': '<p>Teqi Record Store(特奇音像) <button><a href="scan01.html">3D SCAN</a></button></p>'
+          }
+        },
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [121.492088,31.22855]
+          },
+          'properties': {
+            'description': '<p>No.40 Middle Fangbang Road(方浜中路40号)<button><a href="scan01.html">3D SCAN</a></button></p>'
+          }
+        },
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [121.475021, 31.213665]
+          },
+          'properties': {
+            'description': '<p>Intersection between Xujiahui Road and Shunchang Road | 徐家汇路顺昌路 <button><a href="scan01.html">3D SCAN</a></button></p>'
+          }
+        }
+      ]
+    };
+
+    const bounds = [
+      [120.993700, 30.669902], // Southwest coordinates
+      [122.209481, 31.828037] // Northeast coordinates
+    ];
+
+    const map = new mapboxgl.Map({
+      container: 'map', // container ID
+      // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+      style: 'mapbox://styles/siyucchen/clbwfvq7t000815rw928y0oak', // style URL
+      center: [121.487, 31.2239], // starting position [lng, lat]
+      maxZoom: 18,
+      minZoom: 14.9,
+      maxBounds: bounds
+    });
+
+    // add markers to map
+    for (const feature of geojson.features) {
+      // create a HTML element for each feature
+      const el = document.createElement('div');
+      el.className = 'marker';
+
+      // make a marker for each feature and add it to the map
+      new mapboxgl.Marker(el)
+        .setLngLat(feature.geometry.coordinates)
+        .setPopup(
+          new mapboxgl.Popup({ offset: 25 }) // add popups
+            .setHTML(
+              `<p>${feature.properties.description}</p>`
+            )
+        )
+        .addTo(map);
+    }
+
+    map.on('load', () => {
+      map.setFog({});
+
+      //map boundary layer
+      map.addSource('list-boundaries', {
+        type: 'geojson',
+        data: '../media/map/map.geojson'
+      })
+
+      map.addLayer({
+        id: "list-boundaries-fill",
+        type: 'fill',
+        source: 'list-boundaries',
+        paint: {
+          'fill-color': '#000000',
+          'fill-opacity': 0.6
+
+        }
+      })
+
+      map.scrollZoom.enable({ around: 'center' });
+
+    });
+
+    /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
+    function openNav() {
+      document.getElementById("mySidebar").style.width = "350px";
+      document.getElementById("main").style.marginLeft = "350px";
+    }
+
+    /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+    function closeNav() {
+      document.getElementById("mySidebar").style.width = "0";
+      document.getElementById("main").style.marginLeft = "0";
+    }
+
+  </script>
+
+</body>
+
+</html>
