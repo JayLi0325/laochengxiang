@@ -162,8 +162,8 @@ main{
     grid-column: 4/7;
     grid-row: 5/8;
     margin: 2px;
-    margin-left:30px;
-    margin-right:200px;
+    margin-left:20px;
+    margin-right:150px;
     padding: 280px 0px 0px 0px; 
     flex: 95%;
     max-width: 95%; 
@@ -185,7 +185,7 @@ main{
     grid-area: left-main;
     border: none;
     margin: 10px;
-    padding: 5px 10px 10px 10px;  
+    padding: 5px 10px 0px 10px;  
 }
 
 
