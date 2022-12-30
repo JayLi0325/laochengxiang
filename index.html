@@ -12,60 +12,159 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Average+Sans">
 
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;500&family=Poppins:wght@300;400;500;600&display=swap');
-    body {
-        background: rgb(241,241,241);
-        background: linear-gradient(0deg, rgba(241,241,241,1) 20%, rgba(128,128,128,1) 70%);
-        height: 400vh;
-        /**font-family: "Belleza";**/
-        /**font-family: "Crimson Text";**/
-    }
+        @import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;500&family=Poppins:wght@300;400;500;600&display=swap');
 
-    .content {
+        body {
+            background: #808080;
+            height: 260vh;
+            font-family: Arial, sans-serif;
+            /**font-family: "Belleza";**/
+            /**font-family: "Crimson Text";**/
+        }
+
+        .content {
             color: white;
             text-align: center;
         }
-      
 
-    h1 {
-    font-family: "Belleza";    
-    font-size:120px; color: white; margin: 5px;
-    text-shadow: 1px 1px 10px #c9c9c9, 1px 1px 10px #2e2e2e;
-    }
 
-    h2 {
-    font-family: "Goudy Old Style Regular";    
-    font-size:40px; color: white; margin: 5px;
-    text-shadow: 1px 1px 10px #c9c9c9, 1px 1px 10px #2e2e2e;
-    }
+        h1 {
+            font-family: "Belleza";
+            font-size: 120px;
+            color: white;
+            text-shadow: 1px 1px 10px #c9c9c9, 1px 1px 10px #2e2e2e;
+        }
 
-    h3 {
-    font-family: "Goudy Old Style Regular";    
-    font-size:40px; color: white; margin: 5px;
-    text-shadow: 1px 1px 10px #c9c9c9, 1px 1px 10px #2e2e2e;
-    }
+        h2 {
+            font-family: "Goudy Old Style Regular";
+            font-size: 40px;
+            color: white;
+            text-shadow: 1px 1px 10px #c9c9c9, 1px 1px 10px #2e2e2e;
+        }
 
-    p1 {
-    font-family: "Goudy Old Style Regular"; 
-    font-size:25px; color: white; margin: 5px;    
-    }
+        h3 {
+            font-family: "Goudy Old Style Regular";
+            font-size: 40px;
+            color: white;
+            text-shadow: 1px 1px 10px #c9c9c9, 1px 1px 10px #2e2e2e;
+        }
 
-    p2 {
-    font-family: "Goudy Old Style Regular"; 
-    font-size:22px; color: white; margin: 5px;   
-    }
+        p1 {
+            font-family: "Goudy Old Style Regular";
+            font-size: 25px;
+            color: white;
+        }
 
-    p3 {
-    font-size:18px; color: white; margin: 5px;  
-    }
+        p2 {
+            font-family: "Goudy Old Style Regular";
+            font-size: 22px;
+            color: white;
+        }
 
-    /* Slideshow container */
-    .slideshow-container {
-    max-width: 400px;
-    position: relative;
-    margin: auto;
-    }
+        p3 {
+            font-family: "Goudy Old Style Regular";
+            font-size: 18px;
+            color: white;
+        }
 
+        button {
+            background-color: Transparent;
+            border: none;
+            font-family: "Goudy Old Style Regular";
+            font-size: 25px;
+            color: #ffffff;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        button:hover {
+            border: none;
+            opacity: 100%;
+            color: #ffffff;
+            text-shadow: 1px 1px 10px #ffffff, 1px 1px 10px #868686;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        button:focus {
+            outline: 0;
+            text-decoration: none;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            transition: opacity 500ms;
+            visibility: hidden;
+            opacity: 0;
+            z-index: 2;
+        }
+
+        .overlay:target {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .popup {
+            margin: 70px auto;
+            margin-top: 150px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            width: 50%;
+            position: relative;
+            transition: all 5s ease-in-out;
+            z-index: 3;
+        }
+
+        .popup h2 {
+            margin-top: 0;
+            color: rgb(0, 0, 0);
+            text-shadow: none;
+            font-size:32px;
+            font-family: 'Goudy Old Style Regular';
+        }
+
+        .popup p1 {
+            color: rgb(0, 0, 0);
+            text-shadow: none;
+            font-size: 17px;
+            font-family: 'Gilroy Regular';
+        }
+
+        .popup .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            transition: all 200ms;
+            font-size: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .popup .close:hover {
+            color: #000000;
+        }
+
+        .popup .content2 {
+            max-height: 30%;
+            overflow: auto;
+        }
     </style>
 
 </head>
@@ -73,119 +172,155 @@
 <body>
 
     <div class="content">
-        <div class='div1 ripple' style="margin-top:-50px" ></div>
-        <div class='div2 ripple'></div>
-        <div class='div3 ripple' style="margin-top:-50px"></div>
+        <div class='div1 ripple' style="margin-top:-50px"></div>
+        <div class='div2 ripple' style="margin-top:-10px"></div>
+        <div class='div3 ripple' style="margin-top:0px"></div>
     </div>
 
     <main>
 
-    <div id="index-container">    
-        <div id="nav">
-            <div id="home"><a href="#"><p1>Home</p1></a></div>
-            <div id="map"><a href="#"></a><p1>Map</p1></a></div>
-            <div id="e1"></div>
-            <div id="index"><a href="#"></a><p1>Index</p1></a></div>
-            <div id="about"><a href="#"></a><p1>About</p1></a></div>
-    
-        </div>  
+        <div id="index-container">
+            <div id="nav">
+                <div id="home"><button><a href="index.html">Home</a></button></div>
+                <div id="map"><button><a href="/doc/map.html">Map</a></button></div>
+                <div id="e1"></div>
+                <div id="index"><button><a href="/doc/history.html">History</a></button></div>
+                <div id="about"><button><a href="#popup1">Info</a></button></div>
 
-        <div id="title">
-            <div id="header"><h1>Archive of Laochengxiang</h1> <br> 
-            <h2>Reimagining Deconstructed Landscape</h2></div>
-        </div>
+            </div>
 
-        <div id="left-main">
-            <div id="body">
-                    <img class="gallery" style="width:400px" src="media/image/home/01.jpeg">
-                    <img class="gallery" style="width:400px" src="media/image/home/02.jpeg">
-                    <img class="gallery" style="width:400px" src="media/image/home/03.jpeg">
+            <div id="title">
+                <div id="header">
+                    <h1>Archive of Laochengxiang</h1> <br>
+                    <h2>Reimagining Deconstructed Landscape</h2>
+                </div>
+            </div>
+
+            <div id="left-main">
+
+                <img class="gallery" style="width: 100%; max-width:550px" src="media/image/home/01.jpeg">
+                <img class="gallery" style="width: 100%; max-width:550px" src="media/image/home/02.jpeg">
+                <img class="gallery" style="width: 100%; max-width:550px" src="media/image/home/03.jpeg">
+            </div>
+
+            <div id="right-main">
+                <p2>Laochengxiang is Shanghai's historical city center. Situated between the former imperialist
+                    enclaves, it
+                    was an embodiment of Chinese nationality and a site of resistance in the 19th century. Its cultural
+                    landscape mark the coalescence of the imperialist legacy and local culture and effort of
+                    modernization.
+                    The high mobility of the cross-cultural encounters rendered Laochengxiang its unique spatial
+                    structure
+                    and textural configuration: the buildings are densely congregated, tangled in vastly different
+                    styles;
+                    the roads often follow the pattern of waterways, with twists and turns, and less straight. <br><br>
+                    Starting from the 1990s, Laochengxiang has been experiencing radical demolishment as a result of
+                    Shanghai's gentrification progress. The demolishment projects have drastically reconfigured the
+                    spatial
+                    texture, leaving the local knowledge and lived experience of Laochengxiang unremembered. Since the
+                    pandemic, an increasing portion of Laochengxiang's neighborhoods have been expropriated and their
+                    residents evicted, creating large blocks of deserted space. <a href="doc/history.html"
+                        style="text-decoration:underline">[Read more: A Brief History of
+                        Laochengxiang]</a>
+                </p2>
+            </div>
+
+            <div id="foot">
+                <div id="body">
+                    <p1>Archive of Laochengxiang investigates the situatedness and interconnectedness of (de)constructed
+                        landscape and its urban imaginary. By 3D-scanning the disappearing Laochengxiang, this project
+                        generates
+                        spatiotemporal sections of the locale that capture and enlarge the embodied practices, sensual
+                        knowledges, and affectual relations of the locality. This project also examines the demolishing
+                        and
+                        surveillance tactics within the Laochengxiang that entrenched to be symbols of violence, and
+                        their
+                        reconfigurations of the tangible materiality and collective imagination. <br><br>
+                        The scans of the locales reenact the imaginable fragmentation of urban landscape that is central
+                        to
+                        one's experience of a city. These reenactments together conjoin the reminiscent of a walking
+                        tour, that
+                        as Ingold and Vergunst suggest, “momentarily fuses or brings into phase the otherwise divergent
+                        and
+                        unsynchronized life trajectories of individual participants into a unified tale of belonging to
+                        this
+                        place” (2008 p.9).<br><br>
+                        Welcome to Archive of Laochengxiang, <a href="doc/map.html"
+                            style="text-decoration:underline">proceed to begin the procession</a>.
+                    </p1>
+                </div>
             </div>
         </div>
 
-        <div id="right-main">
-            <div id="body"><p2>Laochengxiang is Shanghai's historical city center. Situated between the former imperialist enclaves, it
-                was an embodiment of Chinese nationality and a site of resistance in the 19th century. Its cultural
-                landscape mark the coalescence of the imperialist legacy and local culture and effort of modernization.
-                The high mobility of the cross-cultural encounters rendered Laochengxiang its unique spatial structure
-                and textural configuration: the buildings are densely congregated, tangled in vastly different styles;
-                the roads often follow the pattern of waterways, with twists and turns, and less straight. <br><br>
-                Starting from the 1990s, Laochengxiang has been experiencing radical demolishment as a result of
-                Shanghai's gentrification progress. The demolishment projects have drastically reconfigured the spatial
-                texture, leaving the local knowledge and lived experience of Laochengxiang unremembered. Since the
-                pandemic, an increasing portion of Laochengxiang's neighborhoods have been expropriated and their
-                residents evicted, creating large blocks of deserted space. [Read more: A Brief History of
-                Laochengxiang]
-            </p2></div>
-        </div>
+    </main>
 
-        <div id="foot">
-            <div id="body"><p2>Archive of Laochengxiang investigates the situatedness and interconnectedness of (de)constructed
-                landscape and its urban imaginary. By 3D-scanning the disappearing Laochengxiang, this project generates
-                spatiotemporal sections of the locale that capture and enlarge the embodied practices, sensual
-                knowledges, and affectual relations of the locality. This project also examines the demolishing and
-                surveillance tactics within the Laochengxiang that entrenched to be symbols of violence, and their
-                reconfigurations of the tangible materiality and collective imagination. <br><br>
-                The scans of the locales reenact the imaginable fragmentation of urban landscape that is central to
-                one's experience of a city. These reenactments together conjoin the reminiscent of a walking tour, that
-                as Ingold and Vergunst suggest, “momentarily fuses or brings into phase the otherwise divergent and
-                unsynchronized life trajectories of individual participants into a unified tale of belonging to this
-                place” (2008 p.9).<br><br>
-                Welcome to Archive of Laochengxiang, proceed to begin the procession.
-            </p2></div>
+    <div id="popup1" class="overlay">
+        <div class="popup">
+            <h2>Info</h2>
+            <a class="close" href="#">&times;</a>
+            <div class="content2">
+                <p1>Archive of Laochengxiang is a project by <a href="https://www.instagram.com/dkt_0325/"
+                        style="text-decoration:underline">Jay Li</a>. The project website is developed by Siyu Chen.
+                    Special thanks to Elena Vogman and He You. <br><br> <a href="jay040325@gmail.com"
+                        style="text-decoration:underline">Email</a> <br> <a
+                        href="https://www.instagram.com/chairsoflaochengxiang/"
+                        style="text-decoration:underline">Instagram</a>
+                </p1>
+            </div>
         </div>
     </div>
 
-</main>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="js/three.min.js"></script>
-<script src="js/gsap.min.js"></script>
-<script src="js/ripple-effect.js"></script>
-<script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/three.min.js"></script>
+    <script src="js/gsap.min.js"></script>
+    <script src="js/ripple-effect.js"></script>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
 
-<script>
+    <script>
 
-    var ripple1 = new RippleEffect({
-        parent: document.querySelector('.div1'),			
-        texture: 'media/home/home_background01.png',
-        intensity: 0.25,
-        strength: 3,
-        area: 8,
-        waveSpeed: 0.001,
-        speedIn: 1,
-        speedOut: 3,
-        easing: 'power1.easeInOut',
-        hover: false,			
-    }).start();
+        var ripple1 = new RippleEffect({
+            parent: document.querySelector('.div1'),
+            texture: 'media/home/home_background01.png',
+            intensity: 0.3,
+            strength: 2,
+            area: 6,
+            waveSpeed: 0.001,
+            speedIn: 1,
+            speedOut: 3,
+            easing: 'power2.easeInOut',
+            hover: false,
+        }).start();
 
-    var ripple2 = new RippleEffect({
-        parent: document.querySelector('.div2'),			
-        texture: 'media/home/home_background02.png',
-        intensity: 0.35,
-        strength: 3,        
-        speedIn: 1,
-        speedOut: 3,
-        area: 6,
-        waveSpeed: 0.001,
-        easing: 'power1.easeInOut',
-        hover: false,			
-    }).start();
+        var ripple2 = new RippleEffect({
+            parent: document.querySelector('.div2'),
+            texture: 'media/home/home_background02.png',
+            intensity: 0.9,
+            strength: 3,
+            speedIn: 1,
+            speedOut: 3,
+            area: 6,
+            waveSpeed: 0.0015,
+            easing: 'power4.easeInOut',
+            hover: false,
+        }).start();
 
-    var ripple3 = new RippleEffect({
-        parent: document.querySelector('.div3'),			
-        texture: 'media/home/home_background03.png',
-        speedIn: 4,
-        speedOut: 3,
-        area: 10,
-        waveSpeed: 0.004,
-        easing: undefined,
-        hover: false,			
-    }).start();
+        var ripple3 = new RippleEffect({
+            parent: document.querySelector('.div3'),
+            texture: 'media/home/home_background03.png',
+            intensity: 0.7,
+            strength: 6,
+            speedIn: 2,
+            speedOut: 3,
+            area: 7,
+            waveSpeed: 0.0022,
+            easing: 'power2.easeInOut',
+            hover: false,
+        }).start();
 
-    w3.slideshow(".gallery");
+        w3.slideshow(".gallery");
 
-</script>
+    </script>
 
 
 </body>

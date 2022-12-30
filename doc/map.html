@@ -33,6 +33,26 @@
       font-size:11.5px;
     }
 
+    #navButton {
+    background-color: Transparent;
+    border: none;
+    font-family: "Goudy Old Style Bold";
+    font-size:32px;
+    color: #000000;
+    text-shadow: 1px 1px 10px #1e1e1e, 1px 1px 10px #868686;
+    cursor: pointer; 
+    }
+
+    #navButton:focus {
+    outline:0;
+    }
+
+    #navButton:hover {
+    color: #000000;
+    text-shadow: 1px 1px 10px #000000, 1px 1px 10px #868686;
+    cursor: pointer; 
+    }
+
     .wrapper {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
@@ -103,22 +123,26 @@
     .sidebar .content {
       margin-left: 30px;
       margin-right: 30px;
-      margin-top: 30px;
+      margin-top: 0px;
     }
 
     .sidebar .content .title {
-      font-size: 30px;
+      font-size: 28px;
       font-weight: bold;
       color: #ffffff;
+      font-family: "Goudy Old Style Bold";
     }
 
     .sidebar .content .para {
-      font-size: 16px;
+      font-size: 15px;
       color: #ffffff;
+      font-family: "Gilroy Regular";
+
     }
 
     .sidebar .closebtn {
       position: absolute;
+      color: #ffffff;
       top: 0;
       right: 25px;
       font-size: 36px;
@@ -183,9 +207,11 @@
   <div id="mySidebar" class="sidebar">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <div class="content">
-      <div class="para">This is a virtual tour of Laochengxiang (老城厢).</div>
+      <div class="title">About</div>
+      <div class="para"><br>This is a virtual tour of Laochengxiang (老城厢). Please use the map on the right to access the infopage of each cartographed locale. Each infopage constitutes of <mark>the date of cartography, approx./exact address, thumbnail of the scan, and the link to the 3D scan viewer</mark>.</div>
       <br>
-      <div class="title">How To Navigate?</div>
+      <div class="title">How to Navigate?</div>
+      <div class="para"><br><img src="../media/image/guide/guide01.gif" width="280px"><br><br>1. Click on location marker to access the infopage. To access the 3D scan, click on "VIEW 3D SCAN". The 3D model may take a moment to load. <br><br> <img src="../media/image/guide/guide02.gif" width="280px"> <br><br> 2. Once the 3D model is loaded, you may zoom in/zoom out the viewport by scrolling. You may change the direction of the model by holding the left mouse button. <br><br></div>
     </div>
   </div>
 
@@ -193,10 +219,10 @@
     <div id='map' style='width: 100%; height: auto;'></div>
     <div class="wrapper">
       <div class="guide" onclick="openNav()">
-        <h1>GUIDE</h1>
+        <button id="navButton">GUIDE</button>
       </div>
       <div class="menu">
-        <h1>HOME</h1>
+        <button id="navButton"><a href="../index.html">HOME</a></button>
       </div>
     </div>
   </div>
@@ -217,7 +243,7 @@
             'coordinates': [121.480965, 31.223564]
           },
           'properties': {
-            'description': '<p>Intersection between North Kongjia Alley and Jinjia Lane | 北孔家弄金家坊路口 <a href="scan01.html"><button>3D SCAN</button></a> <br><br> <img src="../media/image/thumbnail/q1_01_beikongjia_jinjiafang.png" width="220px"></p>'
+            'description': '<p>Intersection between North Kongjia Alley and Jinjia Lane | 北孔家弄金家坊路口 | 2021.10.18 | <a href="index/01scan.html"><button>VIEW 3D SCAN</button></a> <br><br> <img src="../media/image/thumbnail/01preview.png" width="220px"></p>'
           }
         },
         {
@@ -227,7 +253,7 @@
             'coordinates': [121.48199, 31.22394]
           },
           'properties': {
-            'description': '<p>Interior of No.91 Jinjia Lane (金家坊91号房屋内部)  <button><a href="scan01.html">3D SCAN</a></button></p>'
+            'description': '<p>Interior of No.91 Jinjia Lane | 金家坊91号房屋内部 | 2021.03.10 | <a href="index/02scan.html"><button>3D SCAN</button></a> <br><br> <img src="../media/image/thumbnail/02preview.png" width="220px"></p>'
           }
         },
         {
@@ -237,7 +263,7 @@
             'coordinates': [121.481995, 31.223967]
           },
           'properties': {
-            'description': '<p>Intersection between Jinjia Lane and Yiqing Street (金家坊贻庆街) <button><a href="scan01.html">3D SCAN</a></button></p>'
+            'description': '<p>Intersection between Jinjia Lane and Yiqing Street | 金家坊贻庆街 | 2021.10.18 | <a href="index/03scan.html"><button>3D SCAN</button></a> <br><br> <img src="../media/image/thumbnail/03preview.png" width="220px"></p>'
           }
         },
         {
@@ -247,7 +273,7 @@
             'coordinates': [121.482697, 31.224186]
           },
           'properties': {
-            'description': '<p>No.60 Honglangan Street (红栏杆街60号) <button><a href="scan01.html">3D SCAN</a></button></p>'
+            'description': '<p>No.60 Honglangan Street | 红栏杆街60号 | 2021.10.18 | <a href="index/04scan.html"><button>3D SCAN</button></a> <br><br> <img src="../media/image/thumbnail/04preview.png" width="220px"></p>'
           }
         },
         {
@@ -257,7 +283,7 @@
             'coordinates': [121.48294,31.22428]
           },
           'properties': {
-            'description': '<p>Aly.11 No.1-3 Jinjia Lane (金家坊11弄1-3号) <button><a href="scan01.html">3D SCAN</a></button></p>'
+            'description': '<p>Aly.11 No.1-3 Jinjia Lane | 金家坊11弄1-3号 | 2021.06.22 | <a href="index/05scan.html"><button>3D SCAN</button></a><br><br> <img src="../media/image/thumbnail/05preview.png" width="220px"></p>'
           }
         },
         {
@@ -267,7 +293,7 @@
             'coordinates': [121.48111,31.224159]
           },
           'properties': {
-            'description': '<p>Aly.44 Xima Lane (西马街44弄) <button><a href="scan01.html">3D SCAN</a></button></p>'
+            'description': '<p>Aly.44 Xima Lane | 西马街44弄 | 2021.10.18 | <a href="index/06scan.html"><button>3D SCAN</button></a><br><br> <img src="../media/image/thumbnail/06preview.png" width="220px"></p>'
           }
         },
         {
@@ -277,7 +303,7 @@
             'coordinates': [121.48108,31.22409]
           },
           'properties': {
-            'description': '<p>Aly.23 Xima Lane (西马街23弄) <button><a href="scan01.html">3D SCAN</a></button></p>'
+            'description': '<p>Aly.23 Xima Lane | 西马街23弄 | 2021.10.18 | <a href="index/07scan.html"><button>3D SCAN</button></a><br><br> <img src="../media/image/thumbnail/07preview.png" width="220px"></p>'
           }
         },
         {
@@ -287,7 +313,7 @@
             'coordinates': [121.48263,31.2245]
           },
           'properties': {
-            'description': '<p>Aly.47 No.11 Jinjia Lane(金家坊47弄11号) <button><a href="scan01.html">3D SCAN</a></button></p>'
+            'description': '<p>Aly.47 No.11 Jinjia Lane | 金家坊47弄11号 | 2021.06.29 | <a href="index/08scan.html"><button>3D SCAN</button></a><br><br> <img src="../media/image/thumbnail/08preview.png" width="220px"></p>'
           }
         },
         {
@@ -297,7 +323,7 @@
             'coordinates': [121.48242,31.22348]
           },
           'properties': {
-            'description': '<p>No.53-55 Kongjia Lane(孔家弄53-55号) <button><a href="scan01.html">3D SCAN</a></button></p>'
+            'description': '<p>No.53-55 Kongjia Lane | 孔家弄53-55号 | 2021.06.22 | <a href="index/09scan.html"><button>3D SCAN</button></a><br><br> <img src="../media/image/thumbnail/09preview.png" width="220px"></p>'
           }
         },
         {
@@ -307,7 +333,7 @@
             'coordinates': [121.481277,31.222933]
           },
           'properties': {
-            'description': '<p>Intersection between North Kongjia Lane and Kongjia Lane (北孔家弄孔家弄路口) <button><a href="scan01.html">3D SCAN</a></button></p>'
+            'description': '<p>Intersection between North Kongjia Lane and Kongjia Lane | 北孔家弄孔家弄路口 | 2021.10.18 | <a href="index/10scan.html"><button>3D SCAN</button></a><br><br> <img src="../media/image/thumbnail/10preview.png" width="220px"></p>'
           }
         },
         {
@@ -317,7 +343,7 @@
             'coordinates': [121.481056,31.222797]
           },
           'properties': {
-            'description': '<p>Aly.129 Kongjia Lane (孔家弄129弄) <button><a href="scan01.html">3D SCAN</a></button></p>'
+            'description': '<p>Aly.129 Kongjia Lane | 孔家弄129弄 | 2021.10.18 | <a href="index/11scan.html"><button>3D SCAN</button></a><br><br> <img src="../media/image/thumbnail/11preview.png" width="220px"></p>'
           }
         },
         {
@@ -327,7 +353,7 @@
             'coordinates': [121.480896,31.222738]
           },
           'properties': {
-            'description': '<p>Aly.119 Kongjia Lane (孔家弄119弄) <button><a href="scan01.html">3D SCAN</a></button></p>'
+            'description': '<p>Aly.119 Kongjia Lane | 孔家弄119弄 <a href="index/12scan.html"><button>3D SCAN</button></a><br><br> <img src="../media/image/thumbnail/12preview.png" width="220px"></p>'
           }
         },
         {
@@ -337,7 +363,17 @@
             'coordinates': [121.480843,31.222485]
           },
           'properties': {
-            'description': '<p>Aly.52 Wenjia Lane (翁家弄52弄) <button><a href="scan01.html">3D SCAN</a></button></p>'
+            'description': '<p>Aly.52 Wengjia Lane | 翁家弄52弄 | 2021.10.18 | <a href="index/13scan.html"><button>3D SCAN</button></a><br><br> <img src="../media/image/thumbnail/13preview.png" width="220px"></p>'
+          }
+        },
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [121.481018,31.222307]
+          },
+          'properties': {
+            'description': '<p>Aly.73 Wengjia Lane | 翁家弄73弄 | 2021.10.18 | <a href="index/14scan.html"><button>3D SCAN</button></a><br><br> <img src="../media/image/thumbnail/14preview.png" width="220px"></p>'
           }
         },
         {
@@ -347,7 +383,7 @@
             'coordinates': [121.480843,31.222485]
           },
           'properties': {
-            'description': '<p>Wenjia Branch Alley (翁家支弄) <button><a href="scan01.html">3D SCAN</a></button></p>'
+            'description': '<p>Wengjia Branch Alley | 翁家支弄 | 2021.10.18 | <a href="index/15scan.html"><button>3D SCAN</button></a><br><br> <img src="../media/image/thumbnail/15preview.png" width="220px"></p>'
           }
         },
         {
@@ -357,7 +393,7 @@
             'coordinates': [121.484444,31.221405]
           },
           'properties': {
-            'description': '<p>Menghua Street (梦花街) <button><a href="scan01.html">3D SCAN</a></button></p>'
+            'description': '<p>Menghua Street | 梦花街 | 2021.10.18 | <a href="index/16scan.html"><button>3D SCAN</button></a><br><br> <img src="../media/image/thumbnail/16preview.png" width="220px"></p>'
           }
         },
         {
@@ -367,7 +403,7 @@
             'coordinates': [121.483543,31.220861]
           },
           'properties': {
-            'description': '<p>Intersection between Xuegong Street and Menghua Street (学宫街梦花街) <button><a href="scan01.html">3D SCAN</a></button></p>'
+            'description': '<p>Intersection between Xuegong Street and Menghua Street | 学宫街梦花街 | 2021.10.18 | <a href="index/17scan.html"><button>3D SCAN</button></a><br><br> <img src="../media/image/thumbnail/17preview.png" width="220px"></p>'
           }
         },
         {
@@ -377,7 +413,17 @@
             'coordinates': [121.483887,31.220335]
           },
           'properties': {
-            'description': '<p>Aly 413. Xuegong Street (学宫街413弄) <button><a href="scan01.html">3D SCAN</a></button></p>'
+            'description': '<p>Aly 413. Xuegong Street | 学宫街413弄 | 2021.09.17 | <a href="index/18scan.html"><button>3D SCAN</button></a><br><br> <img src="../media/image/thumbnail/18preview.png" width="220px"></p>'
+          }
+        },
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [121.483910, 31.220245]
+          },
+          'properties': {
+            'description': '<p>No.6 Aly.53 Xuegong Street | 学宫街53弄6号 | 2021.10.18 | <a href="index/19scan.html"><button>3D SCAN</button></a><br><br> <img src="../media/image/thumbnail/19preview.png" width="220px"></p>'
           }
         },
         {
@@ -387,7 +433,7 @@
             'coordinates': [121.486198,31.219185]
           },
           'properties': {
-            'description': '<p>Xianmianci Street(先棉祠街) <button><a href="scan01.html">3D SCAN</a></button></p>'
+            'description': '<p>Xianmianci Street | 先棉祠街 | 2021.10.18 | <a href="index/20scan.html"><button>3D SCAN</button></a><br><br> <img src="../media/image/thumbnail/20preview.png" width="220px"></p>'
           }
         },
         {
@@ -397,7 +443,7 @@
             'coordinates': [121.488083,31.22101]
           },
           'properties': {
-            'description': '<p>Aly.14 Tingqiao Street (亭桥街14弄) <button><a href="scan01.html">3D SCAN</a></button></p>'
+            'description': '<p>Aly.14 Tingqiao Street | 亭桥街14弄 | 2021.10.09 | <a href="index/21scan.html"><button>3D SCAN</button></a><br><br> <img src="../media/image/thumbnail/21preview.png" width="220px"></p>'
           }
         },
         {
@@ -407,7 +453,7 @@
             'coordinates': [121.488655,31.221214]
           },
           'properties': {
-            'description': '<p>No.4 Ninghe Road (凝和路4号) <button><a href="scan01.html">3D SCAN</a></button></p>'
+            'description': '<p>No.4 Ninghe Road | 凝和路4号 | 2021.10.06 | <a href="index/22scan.html"><button>3D SCAN</button></a><br><br> <img src="../media/image/thumbnail/22preview.png" width="220px"></p>'
           }
         },
         {
@@ -417,7 +463,7 @@
             'coordinates': [121.49142,31.21952]
           },
           'properties': {
-            'description': '<p>Bricks found on Qiaojia Road (乔家路砖头) <button><a href="scan01.html">3D SCAN</a></button></p>'
+            'description': '<p>Bricks found on Qiaojia Road | 乔家路砖头 | 2021.02.17 | <a href="index/23scan.html"><button>3D SCAN</button></a><br><br> <img src="../media/image/thumbnail/23preview.png" width="220px"></p>'
           }
         },
         {
@@ -427,7 +473,7 @@
             'coordinates': [121.491219,31.21911]
           },
           'properties': {
-            'description': '<p>Aly.99 Huangjia Road (黄家路99弄) <button><a href="scan01.html">3D SCAN</a></button></p>'
+            'description': '<p>Aly.99 Huangjia Road | 黄家路99弄 | 2021.10.09 | <a href="index/24scan.htmll"><button>3D SCAN</button></a><br><br> <img src="../media/image/thumbnail/24preview.png" width="220px"></p>'
           }
         },
         {
@@ -437,7 +483,7 @@
             'coordinates': [121.492134,31.219318]
           },
           'properties': {
-            'description': '<p>No.85 Qiaojia Road (乔家路85号周边) <button><a href="scan01.html">3D SCAN</a></button></p>'
+            'description': '<p>No.85 Qiaojia Road | 乔家路85号周边 | 2021.10.09 | <a href="index/25scan.html"><button>3D SCAN</button></a><br><br> <img src="../media/image/thumbnail/25preview.png" width="220px"></p>'
           }
         },
         {
@@ -447,7 +493,7 @@
             'coordinates': [121.492126,31.219336]
           },
           'properties': {
-            'description': '<p>Zi Garden (梓园) <button><a href="scan01.html">3D SCAN</a></button></p>'
+            'description': '<p>Zi Garden | 梓园 | 2021.10.06 | <a href="index/26scan.html"><button>3D SCAN</button></a><br><br> <img src="../media/image/thumbnail/26preview.png" width="220px"></p>'
           }
         },
         {
@@ -457,7 +503,7 @@
             'coordinates': [121.492409,31.218634]
           },
           'properties': {
-            'description': '<p>No.75 Yujia Alley (愈家弄75号) <button><a href="scan01.html">3D SCAN</a></button></p>'
+            'description': '<p>No.75 Yujia Alley | 俞家弄75号 | 2021.10.09 | <a href="index/27scan.html"><button>3D SCAN</button></a><br><br> <img src="../media/image/thumbnail/27preview.png" width="220px"></p>'
           }
         },
         {
@@ -467,7 +513,7 @@
             'coordinates': [121.493217,31.218412]
           },
           'properties': {
-            'description': '<p>Intersection between Yujia Alley and Yongkang Road (愈家弄永康街) <button><a href="scan01.html">3D SCAN</a></button></p>'
+            'description': '<p>Intersection between Yujia Alley and Yongkang Road | 俞家弄永康街 | 2021.10.09 | <a href="index/28scan.html"><button>3D SCAN</button></a><br><br> <img src="../media/image/thumbnail/28preview.png" width="220px"></p>'
           }
         },
         {
@@ -477,7 +523,7 @@
             'coordinates': [121.488655,31.221251]
           },
           'properties': {
-            'description': '<p>Wangyun Road (望云路) <button><a href="scan01.html">3D SCAN</a></button></p>'
+            'description': '<p>Wangyun Road | 望云路 | 2021.10.09 | <a href="index/29scan.html"><button>3D SCAN</button></a><br><br> <img src="../media/image/thumbnail/29preview.png" width="220px"></p>'
           }
         },
         {
@@ -487,7 +533,7 @@
             'coordinates': [121.492432,31.226707]
           },
           'properties': {
-            'description': '<p>Intersection between Zhonghua Road and Yujia Road (中华路康家路路口) <button><a href="scan01.html">3D SCAN</a></button></p>'
+            'description': '<p>Intersection between Zhonghua Road and Yujia Road | 中华路康家路路口 | 2021.10.12 | <a href="index/30scan.html"><button>3D SCAN</button></a><br><br> <img src="../media/image/thumbnail/30preview.png" width="220px"></p>'
           }
         },
         {
@@ -497,7 +543,7 @@
             'coordinates': [121.49118,31.22739]
           },
           'properties': {
-            'description': '<p>Teqi Record Store(特奇音像) <button><a href="scan01.html">3D SCAN</a></button></p>'
+            'description': '<p>Teqi Record Store | 特奇音像 | 2021.10.12 | <a href="index/31scan.htmll"><button>3D SCAN</button></a><br><br> <img src="../media/image/thumbnail/31preview.png" width="220px"></p>'
           }
         },
         {
@@ -507,7 +553,7 @@
             'coordinates': [121.492088,31.22855]
           },
           'properties': {
-            'description': '<p>No.40 Middle Fangbang Road(方浜中路40号)<button><a href="scan01.html">3D SCAN</a></button></p>'
+            'description': '<p>No.40 Middle Fangbang Road(方浜中路40号) | 2021.10.12 <a href="index/32scan.html"><button>3D SCAN</button></a><br><br> <img src="../media/image/thumbnail/32preview.png" width="220px"></p>'
           }
         },
         {
@@ -517,7 +563,7 @@
             'coordinates': [121.475021, 31.213665]
           },
           'properties': {
-            'description': '<p>Intersection between Xujiahui Road and Shunchang Road | 徐家汇路顺昌路 <button><a href="scan01.html">3D SCAN</a></button></p>'
+            'description': '<p>Intersection between Xujiahui Road and Shunchang Road | 徐家汇路顺昌路 | 2021.10.06 <a href="index/00scan.html"><button>3D SCAN</button></a><br><br> <img src="../media/image/thumbnail/00preview.png" width="220px"></p>'
           }
         }
       ]

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <style>
+        body {
+            background: #343434;
+
+        }
+
+        content {
+            position:absolute;
+            text-align: center;
+            display:flex;
+        }
+
+        h1 {
+            font-family: "Goudy Old Style Bold";
+            font-size: 62px;
+            color: white;
+        }
+
+        p1 {
+            font-family: "Gilroy Regular";
+            font-size: 19px;
+            color: white;
+            line-height: 1.4;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            transition: opacity 500ms;
+            visibility: hidden;
+            opacity: 0;
+            z-index: 2;
+        }
+
+        .overlay:target {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .popup {
+            margin: 70px auto;
+            margin-top: 150px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            width: 50%;
+            position: relative;
+            transition: all 5s ease-in-out;
+            z-index: 3;
+        }
+
+        .popup h2 {
+            margin-top: 0;
+            color: rgb(0, 0, 0);
+            text-shadow: none;
+            font-size:32px;
+            font-family: 'Goudy Old Style Regular';
+        }
+
+        .popup p1 {
+            color: rgb(0, 0, 0);
+            text-shadow: none;
+            font-size: 17px;
+            font-family: 'Gilroy Regular';
+        }
+
+        .popup .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            transition: all 200ms;
+            font-size: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .popup .close:hover {
+            color: #000000;
+        }
+
+        .popup .content2 {
+            max-height: 30%;
+            overflow: auto;
+        }
+
+    </style>
+    <title>A Brief History of Laochengxiang</title>
+</head>
+
+<body>
+
+    <div class="content">
+        <div class='div1 ripple' style="margin-top:-20px"></div>
+    </div>
+
+    <main>
+        <div id="historypg">
+            <div id="nav">
+                <div id="home"><a href="../index.html"><button>Home</button></a></div>
+                <div id="map"><a href="map.html"><button>Map</button></a></div>
+                <div id="e1"></div>
+                <div id="index"><a href="history.html"><button>History</button></a></div>
+                <div id="about"><a href="#popup1"><button>Info</button></a></div>
+            </div>
+            <div id="title">
+                <h1>A Brief History of Laochengxiang</h1>
+            </div>
+            <div id="maintext">
+                <p1>Within the 5-kilometer-in-perimeter ring road on the westbound of Huangpu river lies Laochengxiang
+                    (老城厢), the Old City of Shanghai. Laochengxiang’s beginning was marked by the 1553 construction of
+                    the
+                    defensive wall, and it developed steadily as the political, economic, and cultural center of
+                    Shanghai
+                    for more than three hundred years. In 1843, as the result of the Treaty of Nanking, the land
+                    external to
+                    the city wall was exploited by the Westerners, forming the concessions. <br><br>
+                    In the late 19th century, Laochengxiang claimed no longer the central position of the city’s dynamic
+                    as
+                    Shanghai’s political and economic functionality had moved out of the city wall. Most of the
+                    administrative buildings had relocated as well. The former Jiangnan county seat had become “the
+                    Chinese
+                    City” that was often given shape as a mysterious blank in the Western cartography. The locality of
+                    Laochengxiang was engendered by the reflexive subjectification of Chinese nationality that developed
+                    from its situatedness between the socio-economical hegemonies of the imperialists. <br><br>
+                    Entering the 20th century, Laochengxiang hosted primarily residential and religious spaces. The
+                    demand for modern transportation and public health had promoted the demolition of the city wall and
+                    the reclamation of urban waterways. In 1914, the Shanghai General Works Board demolished the city
+                    wall and filled its moat with debris. Two semi-circular roads were constructed along the original
+                    boundaries of the wall, allowing the transmission of people and knowledge to become more freely.
+                    Shanghai was the frontline of the Sino-Japanese war. Affected by the war, numerous constructions in
+                    the Laochengxiang had continuously rebuilt within their cadastral boundaries; many of them were
+                    influenced by the western architectural styles from the concessions. The high mobility of the
+                    cross-cultural encounters rendered Laochengxiang a vary unique spatial texture: the roads often
+                    follow the pattern of waterways, with twists and turns, and less straight; the buildings are densely
+                    congregated, appears in vastly different styles. <br><br>
+                    The geographical configuration of Laochengxiang experienced little change in the early years of the
+                    People’s Republic of China, with the exception of the construction of a set of intersecting roads
+                    (Henan Rd. and Fuxing Rd.) that divided the city into four similar-sized blocks. Starting from the
+                    1990s, Laochengxiang has been experiencing radical demolishment as a result of Shanghai’s
+                    gentrification progress. The demolishment projects have drastically reconfigured the spatial
+                    texture, leaving the local knowledge and lived experience of Laochengxiang unremembered. Since the
+                    pandemic, an increasing portion of Laochengxiang’s neighborhoods have been expropriated and their
+                    residents evicted, creating large blocks of deserted space.<br><br>
+                </p1>
+            </div>
+            <div id="pic">
+                <img class="gallery" style="width:85%; max-width:450px" src="/media/image/map/01.png">
+                <img class="gallery" style="width:85%; max-width:450px" src="/media/image/map/02.jpeg">
+                <img class="gallery" style="width:85%; max-width:450px" src="/media/image/map/03.png">
+            </div>
+        </div>
+    </main>
+
+    <div id="popup1" class="overlay">
+        <div class="popup">
+            <h2>Info</h2>
+            <a class="close" href="#">&times;</a>
+            <div class="content2">
+                <p1>Archive of Laochengxiang is a project by <a href="https://www.instagram.com/dkt_0325/"
+                    style="text-decoration:underline">Jay Li</a>. The project website is developed by Siyu Chen.
+                Special thanks to Elena Vogman and He You. <br><br> <a href="jay040325@gmail.com"
+                    style="text-decoration:underline">Email</a> <br> <a
+                    href="https://www.instagram.com/chairsoflaochengxiang/"
+                    style="text-decoration:underline">Instagram</a>
+                </p1>
+            </div>
+        </div>
+    </div>    
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../js/three.min.js"></script>
+    <script src="../js/gsap.min.js"></script>
+    <script src="../js/ripple-effect.js"></script>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script>
+
+        var ripple1 = new RippleEffect({
+            parent: document.querySelector('.div1'),
+            texture: '../media/home/home_background05.png',
+            intensity: 0.5,
+            strength: 5,
+            area: 20,
+            waveSpeed: 0.001,
+            speedIn: 1,
+            speedOut: 3,
+            easing: 'power2.easeInOut',
+            hover: false,
+        }).start();
+
+        w3.slideshow(".gallery");
+    </script>
+</body>
+
+</html>
