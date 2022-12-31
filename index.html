@@ -30,14 +30,14 @@
 
         h1 {
             font-family: "Belleza";
-            font-size: 120px;
+            font-size: 106px;
             color: white;
             text-shadow: 1px 1px 10px #c9c9c9, 1px 1px 10px #2e2e2e;
         }
 
         h2 {
             font-family: "Goudy Old Style Regular";
-            font-size: 40px;
+            font-size: 32px;
             color: white;
             text-shadow: 1px 1px 10px #c9c9c9, 1px 1px 10px #2e2e2e;
         }
@@ -101,71 +101,6 @@
             text-decoration: none;
         }
 
-        .overlay {
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.7);
-            transition: opacity 500ms;
-            visibility: hidden;
-            opacity: 0;
-            z-index: 2;
-        }
-
-        .overlay:target {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        .popup {
-            margin: 70px auto;
-            margin-top: 150px;
-            padding: 20px;
-            background: #fff;
-            border-radius: 5px;
-            width: 50%;
-            position: relative;
-            transition: all 5s ease-in-out;
-            z-index: 3;
-        }
-
-        .popup h2 {
-            margin-top: 0;
-            color: rgb(0, 0, 0);
-            text-shadow: none;
-            font-size:32px;
-            font-family: 'Goudy Old Style Regular';
-        }
-
-        .popup p1 {
-            color: rgb(0, 0, 0);
-            text-shadow: none;
-            font-size: 17px;
-            font-family: 'Gilroy Regular';
-        }
-
-        .popup .close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            transition: all 200ms;
-            font-size: 30px;
-            font-weight: bold;
-            text-decoration: none;
-            color: #333;
-        }
-
-        .popup .close:hover {
-            color: #000000;
-        }
-
-        .popup .content2 {
-            max-height: 30%;
-            overflow: auto;
-        }
-
         div1 {
             margin-top:-50px;
         }
@@ -201,15 +136,13 @@
                 <div id="map"><button><a href="/doc/map.html">Map</a></button></div>
                 <div id="e1"></div>
                 <div id="index"><button><a href="/doc/history.html">History</a></button></div>
-                <div id="about"><button><a href="#popup1">Info</a></button></div>
+                <div id="about"><button><a href="/doc/info.html">Info</a></button></div>
 
             </div>
 
             <div id="title">
-                <div id="header">
                     <h1>Archive of Laochengxiang</h1> <br>
                     <h2>Reimagining Deconstructed Landscape</h2>
-                </div>
             </div>
 
             <div id="left-main">
@@ -269,22 +202,6 @@
         </div>
 
     </main>
-
-    <div id="popup1" class="overlay">
-        <div class="popup">
-            <h2>Info</h2>
-            <a class="close" href="#">&times;</a>
-            <div class="content2">
-                <p1>Archive of Laochengxiang is a project by <a href="https://www.instagram.com/dkt_0325/"
-                        style="text-decoration:underline">Jay Li</a>. The project website is developed by Siyu Chen.
-                    Special thanks to Elena Vogman and He You. <br><br> <a href="jay040325@gmail.com"
-                        style="text-decoration:underline">Email</a> <br> <a
-                        href="https://www.instagram.com/chairsoflaochengxiang/"
-                        style="text-decoration:underline">Instagram</a>
-                </p1>
-            </div>
-        </div>
-    </div>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
