@@ -86,7 +86,7 @@ main{
     grid-row: 1/2;
     margin: 2px;
     padding: 10px 20px 0px 0px; 
-    grid-template: "home map empty index about";
+    grid-template: "home map empty about";
     grid-template-columns: repeat(auto-fit, minmax(100px, 2fr));
     grid-template-rows: minmax(0px,50px);
 
@@ -213,7 +213,7 @@ main{
     grid-row: 1/2;
     margin: 2px;
     padding: 10px 20px 0px 0px; 
-    grid-template: "home map empty index about";
+    grid-template: "home map empty about";
     grid-template-columns: repeat(auto-fit, minmax(100px, 2fr));
     grid-template-rows: minmax(0px,50px);
 
@@ -323,7 +323,7 @@ main{
     grid-row: 1/2;
     margin: 2px;
     padding: 10px 20px 0px 0px; 
-    grid-template: "home map empty index about";
+    grid-template: "home map empty about";
     grid-template-columns: repeat(auto-fit, minmax(100px, 2fr));
     grid-template-rows: minmax(0px,50px);
 
