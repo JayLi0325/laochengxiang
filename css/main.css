@@ -106,15 +106,15 @@ main{
 
 #index-container #nav #e1{
     text-align: center;
-    grid-column: 3/5;
+    grid-column: 3/6;
     grid-row: 1/2;
 }
 
-#index-container #nav #index{
+/* #index-container #nav #index{
     text-align: center;
     grid-column: 5/6;
     grid-row: 1/2;
-}
+} */
 
 #index-container #nav #about{
     text-align: center;
@@ -184,7 +184,7 @@ main{
 #index-container #foot #body{
     border: none;
     margin: 10px;
-    padding-top: 310px;
+    padding-top: 340px;
 }
 
 
@@ -233,15 +233,15 @@ main{
 
 #historypg #nav #e1{
     text-align: center;
-    grid-column: 3/5;
+    grid-column: 3/6;
     grid-row: 1/2;
 }
 
-#historypg #nav #index{
+/* #historypg #nav #index{
     text-align: center;
     grid-column: 5/6;
     grid-row: 1/2;
-}
+} */
 
 #historypg #nav #about{
     text-align: center;
@@ -343,15 +343,15 @@ main{
 
 #info-container #nav #e1{
     text-align: center;
-    grid-column: 3/5;
+    grid-column: 3/6;
     grid-row: 1/2;
 }
 
-#info-container #nav #index{
+/* #info-container #nav #index{
     text-align: center;
     grid-column: 5/6;
     grid-row: 1/2;
-}
+} */
 
 #info-container #nav #about{
     text-align: center;
