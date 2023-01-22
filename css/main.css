@@ -592,9 +592,14 @@ a {
             padding-top: 50vh;
         }
 
+        #index-container #right-main{
+            margin-bottom:-10vh;
+        
+        }
+
         #index-container #foot #body{
             border: none;
-            padding-top: -100vh;
+            padding-top: 20vh;
             
         }
     }
