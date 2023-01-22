@@ -594,7 +594,7 @@ a {
 
         #index-container #foot #body{
             border: none;
-            padding-top: 20vh;
+            margin-top: -50vh;
         }
     }
 
