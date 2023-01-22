@@ -588,6 +588,15 @@ a {
     }
 
     @media screen and (width:390px) and (height: 844px) {
+        .ripple {
+            flex: 25%;
+            max-width: 500px;
+            height: 80vh;
+            margin: 0px;
+            position: relative;	
+        }
+
+
         #index-container #left-main{
             padding-top: 50vh;
         }
@@ -599,7 +608,7 @@ a {
 
         #index-container #foot #body{
             border: none;
-            padding-top: 20vh;
+            padding-top: 20px;
             
         }
     }
