@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />  
   <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
   <script src="https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js"></script>
@@ -37,7 +37,7 @@
     background-color: Transparent;
     border: none;
     font-family: "Goudy Old Style Regular";
-    font-size:32px;
+    font-size:2.6vw;
     color: #ffffff;
     text-shadow: 1px 1px 10px #c9c9c9, 1px 1px 10px #2e2e2e;
     cursor: pointer; 
@@ -51,6 +51,18 @@
     color: #c4c4c4;
     text-shadow: 1px 1px 10px #929292, 1px 1px 10px #1b1b1b;
     cursor: pointer; 
+    }
+
+    @media screen and (max-width: 499px) {
+    #navButton {
+    font-size:5.5vw;
+    }
+    }
+
+    @media screen and (min-width:500px) and (max-width: 899px) {
+    #navButton {
+    font-size:4.5vw;
+    }
     }
 
     .wrapper {
@@ -73,11 +85,30 @@
       text-align: right;
     }
 
+    @media screen and (min-width: 600px) {
     #map {
+      display: block;
       position: absolute;
       top: 0;
       bottom: 0;
       width: auto;
+    }
+    #map-mobile {
+      display: none;  
+    }
+    }
+
+    @media screen and (max-width: 599px) {
+    #map {
+      display: none;
+    }  
+    #map-mobile {
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: auto;
+    }
     }
 
     .marker {
@@ -85,6 +116,15 @@
       background-size: cover;
       width: 17px;
       height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .marker-mobile {
+      background-image: url('../media/map/map_marker.png');
+      background-size: cover;
+      width: 13px;
+      height: 20px;
       border-radius: 50%;
       cursor: pointer;
     }
@@ -217,6 +257,7 @@
 
   <div id="main">
     <div id='map' style='width: 100%; height: auto;'></div>
+    <div id='map-mobile' style='width: 100%; height: auto;'></div>
     <div class="wrapper">
       <div class="guide" onclick="openNav()">
         <button id="navButton">Guide</button>
@@ -473,7 +514,7 @@
             'coordinates': [121.491219,31.21911]
           },
           'properties': {
-            'description': '<p>Aly.99 Huangjia Road | 黄家路99弄 | 2021.10.09 | <a href="index/24scan.htmll"><button>VIEW 3D SCAN</button></a><br><br> <img src="../media/image/thumbnail/24preview.png" width="220px"></p>'
+            'description': '<p>Aly.99 Huangjia Road | 黄家路99弄 | 2021.10.09 | <a href="index/24scan.html"><button>VIEW 3D SCAN</button></a><br><br> <img src="../media/image/thumbnail/24preview.png" width="220px"></p>'
           }
         },
         {
@@ -543,7 +584,7 @@
             'coordinates': [121.49118,31.22739]
           },
           'properties': {
-            'description': '<p>Teqi Record Store | 特奇音像 | 2021.10.12 | <a href="index/31scan.htmll"><button>VIEW 3D SCAN</button></a><br><br> <img src="../media/image/thumbnail/31preview.png" width="220px"></p>'
+            'description': '<p>Teqi Record Store | 特奇音像 | 2021.10.12 | <a href="index/31scan.html"><button>VIEW 3D SCAN</button></a><br><br> <img src="../media/image/thumbnail/31preview.png" width="220px"></p>'
           }
         },
         {
@@ -569,12 +610,74 @@
       ]
     };
 
-    const bounds = [
+    
+
+    function myFunction(x) {
+    if (x.matches) { // If media query matches
+      const bounds = [
       [120.993700, 30.669902], // Southwest coordinates
       [122.209481, 31.828037] // Northeast coordinates
     ];
 
-    const map = new mapboxgl.Map({
+      const map = new mapboxgl.Map({
+      container: 'map-mobile', // container ID
+      // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+      style: 'mapbox://styles/siyucchen/clbwfvq7t000815rw928y0oak', // style URL
+      center: [121.4865, 31.2239], // starting position [lng, lat]
+      maxZoom: 18,
+      minZoom: 13.9,
+      maxBounds: bounds
+    });
+
+          // add markers to map
+    for (const feature of geojson.features) {
+      // create a HTML element for each feature
+      const el = document.createElement('div');
+      el.className = 'marker-mobile';
+
+      // make a marker for each feature and add it to the map
+      new mapboxgl.Marker(el)
+        .setLngLat(feature.geometry.coordinates)
+        .setPopup(
+          new mapboxgl.Popup({ offset: 25 }) // add popups
+            .setHTML(
+              `<p>${feature.properties.description}</p>`
+            )
+        )
+        .addTo(map);
+    }
+
+    map.on('load', () => {
+      map.setFog({});
+
+      //map boundary layer
+      map.addSource('list-boundaries', {
+        type: 'geojson',
+        data: '../media/map/map.geojson'
+      })
+
+      map.addLayer({
+        id: "list-boundaries-fill",
+        type: 'fill',
+        source: 'list-boundaries',
+        paint: {
+          'fill-color': '#000000',
+          'fill-opacity': 0.6
+
+        }
+      })
+
+      map.scrollZoom.enable({ around: 'center' });
+
+    });
+
+    } else {
+      const bounds = [
+      [120.993700, 30.669902], // Southwest coordinates
+      [122.209481, 31.828037] // Northeast coordinates
+    ];
+
+      const map = new mapboxgl.Map({
       container: 'map', // container ID
       // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
       style: 'mapbox://styles/siyucchen/clbwfvq7t000815rw928y0oak', // style URL
@@ -584,7 +687,7 @@
       maxBounds: bounds
     });
 
-    // add markers to map
+          // add markers to map
     for (const feature of geojson.features) {
       // create a HTML element for each feature
       const el = document.createElement('div');
@@ -625,6 +728,15 @@
       map.scrollZoom.enable({ around: 'center' });
 
     });
+
+    }
+    }
+
+    var x = window.matchMedia("(max-width: 599px)")
+    myFunction(x) // Call listener function at run time
+    x.addListener(myFunction) // Attach listener function on state changes
+
+
 
     /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
     function openNav() {

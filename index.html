@@ -16,7 +16,7 @@
 
         body {
             background: #808080;
-            height: 180vh;
+            /* height: 180vh; */
             font-family: Arial, sans-serif;
             /**font-family: "Belleza";**/
             /**font-family: "Crimson Text";**/
@@ -30,51 +30,38 @@
 
         h1 {
             font-family: "Belleza";
-            font-size: 106px;
+            font-size: 6.625rem;
             color: white;
             text-shadow: 1px 1px 10px #c9c9c9, 1px 1px 10px #2e2e2e;
         }
 
         h2 {
             font-family: "Goudy Old Style Regular";
-            font-size: 32px;
-            color: white;
-            text-shadow: 1px 1px 10px #c9c9c9, 1px 1px 10px #2e2e2e;
-        }
-
-        h3 {
-            font-family: "Goudy Old Style Regular";
-            font-size: 40px;
+            font-size: 2rem;
             color: white;
             text-shadow: 1px 1px 10px #c9c9c9, 1px 1px 10px #2e2e2e;
         }
 
         p1 {
             font-family: "Goudy Old Style Regular";
-            font-size: 24px;
+            font-size: 1.5rem;
             color: white;
-            line-height: 1.2;
+            line-height: 1.5em;
         }
 
         p2 {
             font-family: "Goudy Old Style Regular";
-            font-size: 20px;
+            font-size: 1.25rem;
             color: white;
-            line-height: 1.2;
+            line-height: 0.5em;
 
-        }
-
-        p3 {
-            font-family: "Goudy Old Style Regular";
-            font-size: 18px;
-            color: white;
         }
 
         button {
             background-color: Transparent;
             border: none;
             font-family: "Goudy Old Style Regular";
-            font-size: 25px;
+            font-size: 1.56rem;
             color: #ffffff;
             cursor: pointer;
             text-decoration: none;
@@ -116,6 +103,128 @@
             margin-top:60px;
         }
 
+        #buffer{
+            display:none;
+        }
+
+        .gallery {
+            width: 80%; 
+            max-width:550px;
+        }
+
+        @media only screen and (max-width: 499px) {
+            
+            h1 {
+            font-family: "Belleza";
+            font-size: 13.5vw;
+            color: white;
+            text-shadow: 1px 1px 10px #c9c9c9, 1px 1px 10px #2e2e2e;
+            }
+
+            h2 {
+                font-family: "Goudy Old Style Regular";
+                font-size: 3.5vw;
+                color: white;
+                text-shadow: 1px 1px 10px #c9c9c9, 1px 1px 10px #2e2e2e;
+            }
+
+            p1 {
+                font-family: "Goudy Old Style Regular";
+                font-size: 3.5vw;
+                color: white;
+            }
+
+            p2 {
+                font-family: "Goudy Old Style Regular";
+                font-size: 3vw;
+                color: white;                
+            }
+
+            button {
+                font-size: 1.25rem;
+            }
+
+            .img {
+                display: block;
+                margin-left: auto;
+                margin-right:auto;
+                flex: 80%;
+                max-width: 600px;
+            }
+
+            .buffer {
+                display:block;
+                background-color: #808080;
+                max-height: 50vh;
+            }
+
+        }
+
+        @media only screen and (min-width:500px) and (max-width: 900px) {
+
+            h1 {
+            font-family: "Belleza";
+            font-size: 13.5vw;
+            color: white;
+            text-shadow: 1px 1px 10px #c9c9c9, 1px 1px 10px #2e2e2e;
+            }
+
+            h2 {
+                font-family: "Goudy Old Style Regular";
+                font-size: 3.5vw;
+                color: white;
+                text-shadow: 1px 1px 10px #c9c9c9, 1px 1px 10px #2e2e2e;
+            }
+
+            p1 {
+                font-family: "Goudy Old Style Regular";
+                font-size: 2.5vw;
+                color: white;
+            }
+
+            p2 {
+                font-family: "Goudy Old Style Regular";
+                font-size: 2vw;
+                color: white;
+            }
+
+            button {
+                font-size: 4.5vw;
+            }
+
+            .buffer {
+                display:block;
+                background-color: #808080;
+                max-height: 30px;
+            }
+
+            .img {
+                display: block;
+                margin-left: auto;
+                margin-right:auto;
+                flex: 80%;
+                max-width: 900px;
+            }
+
+        }
+
+        @media only screen and (max-width:499px){
+            .gallery {
+            margin-top:-100px;
+            width:60vw;
+        }
+        }
+
+        @media only screen and (min-width:500px) and (max-width:900px){
+            .gallery {
+            margin-top:0px;
+            width:60vw;
+        }
+        }
+
+        
+
+
         
 
     </style>
@@ -126,6 +235,7 @@
 
     <div class="content">
         <div class='div1 ripple'></div>
+        <div class="buffer"></div>
         <div class='div2 ripple'></div>
         <div class='div3 ripple' style="margin-top:-10px"></div>
 
@@ -148,14 +258,13 @@
             </div>
 
             <div id="left-main">
-
-                <img class="gallery" style="width: 80%; max-width:450px" src="media/image/home/01.jpeg">
-                <img class="gallery" style="width: 80%; max-width:450px" src="media/image/home/02.jpeg">
-                <img class="gallery" style="width: 80%; max-width:450px" src="media/image/home/03.jpeg">
+                <img class="gallery" src="media/image/home/01.jpeg">
+                <img class="gallery" src="media/image/home/02.jpeg">
+                <img class="gallery" src="media/image/home/03.jpeg">
             </div>
 
             <div id="right-main">
-                <p2>Laochengxiang is Shanghai's historical city center. Situated between the former imperialist
+                <p2><br>Laochengxiang is Shanghai's historical city center. Situated between the former imperialist
                     enclaves, it
                     was an embodiment of Chinese nationality and a site of resistance in the 19th century. Its cultural
                     landscape mark the coalescence of the imperialist legacy and local culture and effort of
@@ -214,7 +323,48 @@
 
     <script>
 
-        var ripple1 = new RippleEffect({
+    // function myFunction(x) {
+    //     if (x.matches) { // If media query matches
+    //         var ripple1 = new RippleEffect({
+    //         parent: document.querySelector('.div1'),
+    //         texture: 'media/home/home_background01.png',
+    //         intensity: 0.3,
+    //         strength: 2,
+    //         area: 6,
+    //         waveSpeed: 0.001,
+    //         speedIn: 1,
+    //         speedOut: 3,
+    //         easing: 'power2.easeInOut',
+    //         hover: false,
+    //     }).start();
+
+    //     var ripple2 = new RippleEffect({
+    //         parent: document.querySelector('.div2'),
+    //         texture: 'media/home/home_background02.png',
+    //         intensity: 0.5,
+    //         strength: 5,
+    //         speedIn: 1,
+    //         speedOut: 3,
+    //         area: 6,
+    //         waveSpeed: 0.0015,
+    //         easing: 'power4.easeInOut',
+    //         hover: false,
+    //     }).start();
+
+    //     var ripple3 = new RippleEffect({
+    //         parent: document.querySelector('.div3'),
+    //         texture: 'media/home/home_background03.png',
+    //         intensity: 0.7,
+    //         strength: 6,
+    //         speedIn: 2,
+    //         speedOut: 3,
+    //         area: 7,
+    //         waveSpeed: 0.0022,
+    //         easing: 'power2.easeInOut',
+    //         hover: false,
+    //     }).start();
+    //     } else {
+            var ripple1 = new RippleEffect({
             parent: document.querySelector('.div1'),
             texture: 'media/home/home_background01.png',
             intensity: 0.3,
@@ -230,8 +380,8 @@
         var ripple2 = new RippleEffect({
             parent: document.querySelector('.div2'),
             texture: 'media/home/home_background02.png',
-            intensity: 0.9,
-            strength: 3,
+            intensity: 1.5,
+            strength: 5,
             speedIn: 1,
             speedOut: 3,
             area: 6,
@@ -252,6 +402,13 @@
             easing: 'power2.easeInOut',
             hover: false,
         }).start();
+        // }
+        // }
+
+        // var x = window.matchMedia("(max-width: 900px)")
+        // myFunction(x) // Call listener function at run time
+        // x.addListener(myFunction) // Attach listener function on state changes
+
 
         w3.slideshow(".gallery");
 

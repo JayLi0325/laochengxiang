@@ -34,13 +34,36 @@
         ::-webkit-scrollbar {
         -webkit-appearance: none;
         width: 7px;
-      }
+        }
       
       ::-webkit-scrollbar-thumb {
         border-radius: 4px;
         background-color: rgba(0, 0, 0, .5);
         box-shadow: 0 0 1px rgba(255, 255, 255, .5);
-      }
+        }
+
+      @media only screen and (max-width: 499px) {
+
+        body {
+        /* height: 250vh; */
+
+        }
+
+        content {
+        position:absolute;
+        text-align:left;
+        display:block;
+        }
+
+        h1 {
+        font-size: 10vw;
+        }
+
+        p1 {
+        font-size: 4.5vw;
+        }
+
+        }
 
     </style>
     <title>A Brief History of Laochengxiang</title>
@@ -49,7 +72,7 @@
 <body>
 
     <div class="content">
-        <div class='div1 ripple' style="margin-top:-20px"></div>
+        <div class='div1 ripple' style="margin-top:-20px; position:fixed"></div>
     </div>
 
     <main>
@@ -99,6 +122,7 @@
                     texture, leaving the local knowledge and lived experience of Laochengxiang unremembered. Since the
                     pandemic, an increasing portion of Laochengxiang’s neighborhoods have been expropriated and their
                     residents evicted, creating large blocks of deserted space.<br><br>
+                    <a href="#top">BACK TO TOP</a>
                 </p1>
             </div>
             <div id="pic">
@@ -108,22 +132,6 @@
             </div>
         </div>
     </main>
-
-    <div id="popup1" class="overlay">
-        <div class="popup">
-            <h2>Info</h2>
-            <a class="close" href="#">&times;</a>
-            <div class="content2">
-                <p1>Archive of Laochengxiang is a project by <a href="https://www.instagram.com/dkt_0325/"
-                    style="text-decoration:underline">Jay Li</a>. The project website is developed by Siyu Chen.
-                Special thanks to Elena Vogman and He You. <br><br> <a href="jay040325@gmail.com"
-                    style="text-decoration:underline">Email</a> <br> <a
-                    href="https://www.instagram.com/chairsoflaochengxiang/"
-                    style="text-decoration:underline">Instagram</a>
-                </p1>
-            </div>
-        </div>
-    </div>    
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
