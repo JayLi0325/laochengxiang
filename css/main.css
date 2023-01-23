@@ -44,7 +44,7 @@ body{
 
 .ripple {
     width: 100vw;
-    min-height: 110vh;
+    min-height: 105vh;
     margin: 0px;
     position: relative;	
 }
@@ -608,7 +608,7 @@ a {
 
         #index-container #foot #body{
             border: none;
-            padding-top: 20px;
+            padding-top: 10px;
             
         }
     }
