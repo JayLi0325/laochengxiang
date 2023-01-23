@@ -88,7 +88,7 @@ main{
     padding: 10px 20px 0px 0px; 
     grid-template: "home map empty about";
     grid-template-columns: repeat(auto-fit, minmax(100px, 2fr));
-    grid-template-rows: minmax(0px,50px);
+    /* grid-template-rows: minmax(0px,30px); */
 
 }
 
@@ -144,8 +144,7 @@ main{
     margin: 2px;
     margin-left: 200px;
     padding: 270px 0px 0px 0px; 
-    flex: 75%;
-    max-width: 75%;
+
 
 }
 
@@ -157,8 +156,7 @@ main{
     margin-left:20px;
     margin-right:150px;
     padding: 280px 0px 0px 0px; 
-    flex: 95%;
-    max-width: 95%; 
+
 
 }
 
@@ -169,7 +167,7 @@ main{
     grid-row: 8/11;
     margin-left: 60px;
     margin-right:50px;
-    padding: 110px 10px 0px 10px;
+    padding: 0px 10px 0px 10px;
     text-align: center; 
 }
 
